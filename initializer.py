@@ -12,8 +12,8 @@ if command == 'random':
     print 'Max number of commits on each branch: ', max_n_of_commits
 
     for i in range(1, n_of_branches + 1):
-        create_branch = 'git branch new_branch_', i
-        subprocess.Popen(branch, shell=True)
+        create_branch = 'git branch new_branch_' + str(i)
+        subprocess.Popen(create_branch, shell=True)
 
 
 
