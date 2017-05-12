@@ -5,16 +5,17 @@ import subprocess
 import random
 import string
 import os
+import time
 
 BASE_PATH = sys.argv[2]
 BASE_GIT = 'git -C ' + BASE_PATH
 
-def update_file(filename, branch):
-    random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
-    subprocess.Popen('(' + branch + ') -> ' + random_string, shell=True)
+# Append a given string to a file
+def update_file(filename, string_to_append):
+    subprocess.Popen('[' + time.time() + '] -> ' + string_to_append, shell=True)
     return
 
-# Initializes an empty git repo
+# Creates an empty folder (if it doesn't exist) and initialize a git repo in it
 def init_git_repo(path):
     if not os.path.exists(path):
         os.makedirs(path)
@@ -27,11 +28,12 @@ def reset(path):
     subprocess.Popen(BASE_GIT + path + ' checkout master')
     return
 
-# Creates a new branch without checking out
+# Creates a new branch
 def create_branch(branch_name):
     subprocess.Popen(BASE_GIT + ' branch ' + branch_name)
     return
 
+# Check out on a new branch
 def checkout(branch_name):
     subprocess.Popen(BASE_GIT + ' checkout ' + branch_name)
     return
@@ -52,7 +54,8 @@ if command == 'random':
         create_branch(branch_name)
 
         filename = 'file_in_branch_' + str(i) + '.txt'
-        update_file(filename, branch_name)
+        random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
+        update_file(filename, random_string)
 
 print 'Inviati ' , len(sys.argv), ' arguments'
 print 'Arguments: ', str(sys.argv)
