@@ -10,9 +10,14 @@ import time
 BASE_PATH = sys.argv[2]
 BASE_GIT = 'git -C ' + BASE_PATH
 
+# Commits all using git commit command
+def commit():
+    subprocess.Popen(BASE_GIT + ' commit -m "date: ' + str(time.time()) + '"', shell=True)
+    return
+
 # Append a given string to a file
 def update_file(filename, string_to_append):
-    subprocess.Popen('[' + time.time() + '] -> ' + string_to_append, shell=True)
+    subprocess.Popen('echo "[' + str(time.time()) + '] -> ' + string_to_append + '" >> ' + filename, shell=True)
     return
 
 # Creates an empty folder (if it doesn't exist) and initialize a git repo in it
@@ -20,28 +25,29 @@ def init_git_repo(path):
     if not os.path.exists(path):
         os.makedirs(path)
     
-    subprocess.Popen(BASE_GIT + path + ' init ', shell=True)
+    subprocess.Popen(BASE_GIT + ' init ', shell=True)
     return
 
 # Resets the branch on master
-def reset(path):
-    subprocess.Popen(BASE_GIT + path + ' checkout master')
+def reset():
+    subprocess.Popen(BASE_GIT + ' checkout master', shell=True)
     return
 
 # Creates a new branch
 def create_branch(branch_name):
-    subprocess.Popen(BASE_GIT + ' branch ' + branch_name)
+    subprocess.Popen(BASE_GIT + ' branch ' + branch_name, shell=True)
     return
 
 # Check out on a new branch
 def checkout(branch_name):
-    subprocess.Popen(BASE_GIT + ' checkout ' + branch_name)
+    subprocess.Popen(BASE_GIT + ' checkout ' + branch_name, shell=True)
     return
 
 command = sys.argv[1]
 
-init_git_repo(path)
+init_git_repo(BASE_GIT)
 
+# initializer.py random ../path 3 4
 if command == 'random':
     n_of_branches = int(sys.argv[3])
     max_n_of_commits = int(sys.argv[4])
@@ -52,10 +58,15 @@ if command == 'random':
     for i in range(1, n_of_branches + 1):
         branch_name = 'new_branch_' + str(i)
         create_branch(branch_name)
+        checkout(branch_name)
 
         filename = 'file_in_branch_' + str(i) + '.txt'
         random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
         update_file(filename, random_string)
+
+        commit()
+
+        reset()
 
 print 'Inviati ' , len(sys.argv), ' arguments'
 print 'Arguments: ', str(sys.argv)
