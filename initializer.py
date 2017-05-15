@@ -51,9 +51,11 @@ def checkout(branch_name):
 # Executes and log a command
 def execute(command):
     with open(LOG_FILE, 'a') as log_file:
-        log_file.write(command)
+        log_file.write(command + '\n')
 
     subprocess.Popen(command, shell=True)
+    time.sleep(2)
+    
     return
 
 command = sys.argv[1]
