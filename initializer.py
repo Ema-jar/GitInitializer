@@ -28,7 +28,7 @@ def init_git_repo():
         os.makedirs(BASE_PATH)
     
     execute(BASE_GIT + ' init ')
-    update_file('master_file.txt', 'First commit on master')
+    update_file('master_file.txt', '[master] First commit on master')
     commit()
 
     return
@@ -54,7 +54,7 @@ def execute(command):
         log_file.write(command + '\n')
 
     subprocess.Popen(command, shell=True)
-    time.sleep(2)
+    time.sleep(1)
 
     return
 
@@ -88,5 +88,10 @@ if command == 'random':
 
         # come back to master
         reset()
+
+    # master moves ahead
+    checkout('master')
+    update_file('file_in_master.txt', '[master] Fast commit on master')
+    commit()
 
 print('end_of_script')
