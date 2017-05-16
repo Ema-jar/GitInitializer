@@ -55,7 +55,7 @@ def execute(command):
 
     subprocess.Popen(command, shell=True)
     time.sleep(2)
-    
+
     return
 
 command = sys.argv[1]
@@ -76,13 +76,15 @@ if command == 'random':
         # checkout on the created branh
         checkout(branch_name)
 
-        # create a new file
-        filename = 'file_in_branch_' + str(i) + '.txt'
-        random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
-        update_file(filename, random_string)
+        for j in range(1, max_n_of_commits):
 
-        # commit that file
-        commit()
+            # create a new file
+            filename = 'file_in_branch_' + str(i) + '.txt'
+            random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
+            update_file(filename, random_string)
+
+            # commit that file
+            commit()
 
         # come back to master
         reset()
