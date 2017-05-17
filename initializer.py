@@ -30,12 +30,12 @@ def random_command(n_of_branches, max_n_of_commits):
             git.commit()
 
         # come back to master
-            git.reset()
+        git.reset()
 
     # master moves ahead
-        git.checkout('master')
-        git.update_file('file_in_master.txt', '[master] Fast commit on master')
-        git.commit()
+    git.checkout('master')
+    git.update_file('file_in_master.txt', '[master] Fast commit on master')
+    git.commit()
 
     return
 
