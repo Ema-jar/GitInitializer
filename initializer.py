@@ -7,9 +7,10 @@ import string
 import os
 import time
 
-BASE_PATH = sys.argv[2]
+BASE_PATH = '../testGit'
 BASE_GIT = 'git -C ' + BASE_PATH
 LOG_FILE = 'log.txt'
+
 
 # Adds all and commits all using git commit command
 def commit():
@@ -17,10 +18,12 @@ def commit():
     execute(BASE_GIT + ' commit -m "date: ' + str(time.time()) + '"')
     return
 
+
 # Append a given string to a file
 def update_file(filename, string_to_append):
     execute('echo "[' + str(time.time()) + '] -> ' + string_to_append + '" >> ' + BASE_PATH + '/' + filename)
     return
+
 
 # Creates an empty folder (if it doesn't exist) and initialize a git repo in it
 def init_git_repo():
@@ -33,20 +36,24 @@ def init_git_repo():
 
     return
 
+
 # Resets the branch on master
 def reset():
     execute(BASE_GIT + ' checkout master')
     return
+
 
 # Creates a new branch
 def create_branch(branch_name):
     execute(BASE_GIT + ' branch ' + branch_name)
     return
 
+
 # Check out on a new branch
 def checkout(branch_name):
     execute(BASE_GIT + ' checkout ' + branch_name)
     return
+
 
 # Executes and log a command
 def execute(command):
@@ -58,12 +65,9 @@ def execute(command):
 
     return
 
-command = sys.argv[1]
 
-# initializer.py random ../path 3 4
-if command == 'random':
-    n_of_branches = int(sys.argv[3])
-    max_n_of_commits = int(sys.argv[4])
+# Executes the command to generate random commit and branches
+def random_command(n_of_branches, max_n_of_commits):
 
     init_git_repo()
 
@@ -77,7 +81,6 @@ if command == 'random':
         checkout(branch_name)
 
         for j in range(1, max_n_of_commits):
-
             # create a new file
             filename = 'file_in_branch_' + str(i) + '.txt'
             random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
@@ -94,4 +97,12 @@ if command == 'random':
     update_file('file_in_master.txt', '[master] Fast commit on master')
     commit()
 
-print('end_of_script')
+    return
+
+if __name__ == '__main__':
+    command = sys.argv[1]
+
+    if command == 'random':
+        random_command(int(sys.argv[3]), int(sys.argv[4]))
+
+    print('End of ' + __name__)
