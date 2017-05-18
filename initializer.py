@@ -6,8 +6,8 @@ import string
 import common_git_functions as git
 
 
-# Executes the command to generate random commit and branches
-def random_command(n_of_branches, max_n_of_commits):
+# Executes the command to generate a simple configuration with commit and branches
+def simple_command(n_of_branches, max_n_of_commits):
 
     git.init_git_repo()
 
@@ -43,6 +43,11 @@ if __name__ == '__main__':
     command = sys.argv[1]
 
     if command == 'random':
-        random_command(int(sys.argv[3]), int(sys.argv[4]))
+        random_branches = random.randint(3, 5)
+        random_commits = random.randint(2, 5)
+        simple_command(random_branches, random_commits)
+
+    if command == 'simple':
+        simple_command(int(sys.argv[3]), int(sys.argv[4]))
 
     print('End of ' + __name__)
