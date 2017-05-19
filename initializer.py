@@ -4,6 +4,7 @@ import sys
 import random
 import string
 import common_git_functions as git
+import check_params as check
 
 
 # Executes the command to generate a simple configuration with commit and branches
@@ -40,6 +41,11 @@ def simple_command(n_of_branches, max_n_of_commits):
     return
 
 if __name__ == '__main__':
+
+    parameters = sys.argv[:]
+    parameters.pop(0)
+    check.check_params(parameters)
+
     command = sys.argv[1]
 
     if command == 'random':
