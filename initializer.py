@@ -8,7 +8,7 @@ import check_params as check
 
 
 # Executes the command to generate a simple configuration with commit and branches
-def simple_command(n_of_branches, max_n_of_commits):
+def simple_command(n_of_branches, n_of_commits):
 
     git.init_git_repo()
 
@@ -18,10 +18,10 @@ def simple_command(n_of_branches, max_n_of_commits):
         branch_name = 'new_branch_' + str(i)
         git.create_branch(branch_name)
 
-        # checkout on the created branh
+        # checkout on the created branch
         git.checkout(branch_name)
 
-        for j in range(1, max_n_of_commits):
+        for j in range(1, n_of_commits):
             # create a new file
             filename = 'file_in_branch_' + str(i) + '.txt'
             random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
@@ -54,6 +54,6 @@ if __name__ == '__main__':
         simple_command(random_branches, random_commits)
 
     if command == 'simple':
-        simple_command(int(sys.argv[3]), int(sys.argv[4]))
+        simple_command(int(sys.argv[2]), int(sys.argv[3]))
 
     print('End of ' + __name__)
