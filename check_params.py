@@ -31,6 +31,9 @@ def check_simple(params):
 
 # RANDOM takes no parameters
 def check_random(params):
-    print 'RANDOM:' + params.length + ' params'
-    return
+    if len(params) != 0:
+        print 'Expected no parameters for RANDOM action, ' + len(params) + ' where found'
+        return False
+
+    return True
 
