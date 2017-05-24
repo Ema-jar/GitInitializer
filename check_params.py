@@ -7,12 +7,15 @@ def check_params(params):
     params.pop(0)
 
     if command == 'simple':
-        check_simple(params)
+        return check_simple(params)
 
     if command == 'random':
-        check_random(command)
+        return check_random(params)
 
-    return
+    if command == 'custom':
+        return check_custom(params)
+
+    return False
 
 
 # SIMPLE takes two params n_of_branches and n_of_commits
@@ -33,6 +36,15 @@ def check_simple(params):
 def check_random(params):
     if len(params) != 0:
         print 'Expected no parameters for RANDOM action, ' + len(params) + ' where found'
+        return False
+
+    return True
+
+
+# CUSTOM takes any number of couples like this -> (branch_name, number_of_commits)
+def check_custom(params):
+    if len(params) == 0:
+        print 'Expected at least one parameter for RANDOM action'
         return False
 
     return True

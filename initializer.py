@@ -40,6 +40,10 @@ def simple_command(n_of_branches, n_of_commits):
 
     return
 
+# Executes the command to generate branches and commit based on the user input
+def custom_command(branches):
+    return
+
 if __name__ == '__main__':
 
     parameters = sys.argv[:]
@@ -55,5 +59,8 @@ if __name__ == '__main__':
 
     if command == 'simple':
         simple_command(int(sys.argv[2]), int(sys.argv[3]))
+
+    if command == 'custom':
+        custom_command(sys.argv)
 
     print('End of ' + __name__)
