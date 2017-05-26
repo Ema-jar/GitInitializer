@@ -68,6 +68,11 @@ def custom_command(parameters):
 
     return
 
+
+def help_command():
+    check.print_usage()
+    return
+
 if __name__ == '__main__':
 
     parameters = sys.argv[:]
@@ -85,7 +90,10 @@ if __name__ == '__main__':
     if command == 'simple':
         simple_command(parameters)
 
-    if command == 'custom':
+    if command == 'custom' or command == '':
         custom_command(parameters)
+
+    if command == '--help':
+        help_command()
 
     print('End of ' + __name__)
