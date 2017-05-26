@@ -48,7 +48,7 @@ def custom_command(parameters):
     print parameters
 
     for single_parameter in parameters:
-        parameter_couple = single_parameter.replace('(', '').replace(')', '').split(',')
+        parameter_couple = single_parameter.replace('(', '').replace(')', '').split('-')
         branch_name = parameter_couple[0]
         n_of_commits = parameter_couple[1]
 
