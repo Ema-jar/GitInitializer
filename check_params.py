@@ -49,3 +49,9 @@ def check_custom(params):
 
     return True
 
+
+# Prints the usage message
+def print_usage():
+    print 'Usage: initializer.py [command] [n_of_branches | n_of_commits | couple1 couple2 ... coupleN]'
+    return
+
