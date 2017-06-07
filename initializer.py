@@ -80,7 +80,7 @@ if __name__ == '__main__':
         random_branches = random.randint(3, 5)
         random_commits = random.randint(2, 5)
 
-        simple_command(random_branches, random_commits)
+        simple_command([random_branches, random_commits])
 
     if command == 'simple':
         simple_command(parameters)

@@ -2,6 +2,7 @@
 
 
 def check_params(params):
+
     command = params[0]
     params.pop(0)
 
