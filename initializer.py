@@ -9,8 +9,8 @@ import check_params as check
 
 # Executes the command to generate a simple configuration with commit and branches
 def simple_command(parameters):
-    n_of_branches = parameters[0]
-    n_of_commits = parameters[1]
+    n_of_branches = int(parameters[0])
+    n_of_commits = int(parameters[1])
 
     git.init_git_repo()
 
