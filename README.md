@@ -16,7 +16,7 @@ want to generate in your local repository.
 **n_of_commits**: the number of commits on each branch
 of your local repository.
 
-##### Example
+#### Example
 
 `simple 3 4`
 
@@ -33,7 +33,7 @@ and commit on your local repository.
 
 ## Custom mode
 
-`custom [<couples>...]`
+`custom couple ...`
 
 The custom mode allows you to create your own set of
 branches and commits providing a list of couples.
@@ -41,7 +41,7 @@ Each couple should follow this format:
 
 **(branch_name, number_of_commits)**
 
-##### Example
+#### Example
 
 `custom (first, 3) (secon, 5)`
 
