@@ -33,7 +33,7 @@ and commit on your local repository.
 
 ## Custom mode
 
-`custom [<couples>...]`
+`custom couple ...`
 
 The custom mode allows you to create your own set of
 branches and commits providing a list of couples.
