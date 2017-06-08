@@ -43,7 +43,7 @@ Each couple should follow this format:
 
 #### Example
 
-`custom (first, 3) (secon, 5)`
+`custom (first,3) (secon,5)`
 
 This command generates two branches named 
 _first_ and _second_. 

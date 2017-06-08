@@ -47,11 +47,17 @@ def check_custom(params):
         print 'Expected at least one parameter for RANDOM action'
         return False
 
+    for single_param in params:
+        if single_param.find('(') == -1 or single_param.find(')') or len(single_param.split(',')) != 2:
+            print single_param + ' is not a valid param'
+            print_usage()
+            return False
+
     return True
 
 
 # Prints the usage message
 def print_usage():
-    print 'Usage: initializer.py [simple n_of_branches n_of_commits ] [random] [custom couple ...]'
+    print 'Usage: initializer.py [simple n_of_branches n_of_commits ] [random] [custom (branch_name,n_of_commits) ...]'
     return
 
