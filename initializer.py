@@ -23,7 +23,7 @@ def simple_command(parameters):
         # checkout on the created branch
         git.checkout(branch_name)
 
-        for j in range(1, n_of_commits):
+        for j in range(0, n_of_commits):
             # create a new file
             filename = 'file_in_branch_' + str(i) + '.txt'
             random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
@@ -45,17 +45,17 @@ def simple_command(parameters):
 
 # Executes the command to generate branches and commit based on the user input
 def custom_command(parameters):
-    print parameters
+    git.init_git_repo()
 
     for single_parameter in parameters:
-        parameter_couple = single_parameter.replace('(', '').replace(')', '').split('-')
+        parameter_couple = single_parameter.replace('(', '').replace(')', '').split(',')
         branch_name = parameter_couple[0]
-        n_of_commits = parameter_couple[1]
+        n_of_commits = int(parameter_couple[1])
 
         git.create_branch(branch_name)
         git.checkout(branch_name)
 
-        for j in range(1, n_of_commits):
+        for j in range(0, n_of_commits):
             # create a new file
             filename = 'file_in_branch_' + str(branch_name) + '.txt'
             random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
