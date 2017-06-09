@@ -48,7 +48,7 @@ def check_custom(params):
         return False
 
     for single_param in params:
-        if single_param.find('(') == -1 or single_param.find(')') or len(single_param.split(',')) != 2:
+        if single_param.find('(') == -1 or single_param.find(')') == -1 or len(single_param.split(',')) != 2:
             print single_param + ' is not a valid param'
             print_usage()
             return False
