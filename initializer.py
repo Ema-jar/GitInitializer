@@ -9,10 +9,10 @@ import check_params as check
 
 # Executes the command to generate a simple configuration with commit and branches
 def simple_command(parameters):
+    git.init_git_repo()
+
     n_of_branches = int(parameters[0])
     n_of_commits = int(parameters[1])
-
-    git.init_git_repo()
 
     for i in range(1, n_of_branches + 1):
 
@@ -65,6 +65,41 @@ def custom_command(parameters):
             git.commit()
 
         git.reset()
+
+    return
+
+
+def random_command(parameters):
+    git.init_git_repo()
+
+    n_of_branches = random.randint(1, int(parameters[0]))
+    n_of_commits = random.randint(1, int(parameters[1]))
+
+    for i in range(1, n_of_branches + 1):
+
+        # create new branch
+        branch_name = 'new_branch_' + str(i)
+        git.create_branch(branch_name)
+
+        # checkout on the created branch
+        git.checkout(branch_name)
+
+        for j in range(0, n_of_commits):
+            # create a new file
+            filename = 'file_in_branch_' + str(i) + '.txt'
+            random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
+            git.update_file(filename, random_string)
+
+            # commit that file
+            git.commit()
+
+        # come back to master
+        git.reset()
+
+    # master moves ahead
+    git.checkout('master')
+    git.update_file('file_in_master.txt', '[master] Fast commit on master')
+    git.commit()
 
     return
 
