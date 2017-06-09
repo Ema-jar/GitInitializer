@@ -37,7 +37,7 @@ def simple_command(parameters):
 
     # master moves ahead
     git.checkout('master')
-    git.update_file('file_in_master.txt', '[master] Fast commit on master')
+    git.update_file('file_in_master.txt', '[master] Last commit on master')
     git.commit()
 
     return
@@ -65,6 +65,11 @@ def custom_command(parameters):
             git.commit()
 
         git.reset()
+
+    # master moves ahead
+    git.checkout('master')
+    git.update_file('file_in_master.txt', '[master] Last commit on master')
+    git.commit()
 
     return
 
@@ -98,7 +103,7 @@ def random_command(parameters):
 
     # master moves ahead
     git.checkout('master')
-    git.update_file('file_in_master.txt', '[master] Fast commit on master')
+    git.update_file('file_in_master.txt', '[master] Last commit on master')
     git.commit()
 
     return
