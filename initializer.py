@@ -37,7 +37,7 @@ def simple_command(parameters):
 
     # master moves ahead
     git.checkout('master')
-    git.update_file('file_in_master.txt', '[master] Fast commit on master')
+    git.update_file('file_in_master.txt', '[master] Last commit on master')
     git.commit()
 
     return
@@ -66,6 +66,11 @@ def custom_command(parameters):
 
         git.reset()
 
+    # master moves ahead
+    git.checkout('master')
+    git.update_file('file_in_master.txt', '[master] Last commit on master')
+    git.commit()
+
     return
 
 
@@ -73,7 +78,6 @@ def random_command(parameters):
     git.init_git_repo()
 
     n_of_branches = random.randint(1, int(parameters[0]))
-    n_of_commits = random.randint(1, int(parameters[1]))
 
     for i in range(1, n_of_branches + 1):
 
@@ -83,6 +87,8 @@ def random_command(parameters):
 
         # checkout on the created branch
         git.checkout(branch_name)
+
+        n_of_commits = random.randint(1, int(parameters[1]))
 
         for j in range(0, n_of_commits):
             # create a new file
@@ -98,7 +104,7 @@ def random_command(parameters):
 
     # master moves ahead
     git.checkout('master')
-    git.update_file('file_in_master.txt', '[master] Fast commit on master')
+    git.update_file('file_in_master.txt', '[master] Last commit on master')
     git.commit()
 
     return
