@@ -123,17 +123,23 @@ if __name__ == '__main__':
             random_branches = random.randint(3, 5)
             random_commits = random.randint(2, 5)
 
+            print('\x1b[2;30;42m' + 'COMMAND: ' + command + ' ' + str(random_branches) + ' ' + str(random_commits) + '\x1b[0m')
             random_command(random_branches, random_commits)
+            print('\x1b[2;30;42m' + 'SUCCESS!' + '\x1b[0m')
 
         if command == 'simple':
             n_of_branches = int(parameters[0])
             n_of_commits = int(parameters[1])
-            simple_command(n_of_branches, n_of_commits)
 
-        if command == 'custom' or command == '':
+            print('\x1b[2;30;42m' + 'COMMAND: ' + command + ' ' + str(n_of_branches) + ' ' + str(n_of_commits) + '\x1b[0m')
+            simple_command(n_of_branches, n_of_commits)
+            print('\x1b[2;30;42m' + 'SUCCESS!' + '\x1b[0m')
+
+        if command == 'custom':
+            print('\x1b[2;30;42m' + 'COMMAND: ' + command + ' ' + str(parameters) + '\x1b[0m')
             custom_command(parameters)
+            print('\x1b[2;30;42m' + 'SUCCESS!' + '\x1b[0m')
 
         if command == '--help':
             help_command()
 
-    print('End of ' + __name__)
