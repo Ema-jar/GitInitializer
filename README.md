@@ -24,6 +24,7 @@ This command will generate three branches named
 _new_branch_1_, _new_branch_2_ and _new_branch_3_.
 Each branch will have 4 commits.
 
+![Simple mode](images/simple.png)
 
 
 ## Random mode
@@ -32,6 +33,9 @@ Each branch will have 4 commits.
 
 This command generate a random combination of branches
 and commit on your local repository.
+
+![Simple mode](images/random.png)
+
 
 ## Custom mode
 
@@ -45,9 +49,12 @@ Each couple should follow this format:
 
 #### Example
 
-`custom (first,3) (secon,5)`
+`custom (hotfix,1) (bug,2) (feature,3)`
 
 This command generates two branches named 
 _first_ and _second_. 
 The first branch will have 3 commits while the second 
 one will have 5 commits.
+
+![Simple mode](images/custom.png)
+
