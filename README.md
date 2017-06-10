@@ -24,6 +24,8 @@ This command will generate three branches named
 _new_branch_1_, _new_branch_2_ and _new_branch_3_.
 Each branch will have 4 commits.
 
+
+
 ## Random mode
 
 `random`
