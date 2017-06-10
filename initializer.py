@@ -8,13 +8,10 @@ import check_params as check
 
 
 # Executes the command to generate a simple configuration with commit and branches
-def simple_command(parameters):
+def simple_command(branches, commits):
     git.init_git_repo()
 
-    n_of_branches = int(parameters[0])
-    n_of_commits = int(parameters[1])
-
-    for i in range(1, n_of_branches + 1):
+    for i in range(1, branches + 1):
 
         # create new branch
         branch_name = 'new_branch_' + str(i)
@@ -23,7 +20,7 @@ def simple_command(parameters):
         # checkout on the created branch
         git.checkout(branch_name)
 
-        for j in range(0, n_of_commits):
+        for j in range(0, commits):
             # create a new file
             filename = 'file_in_branch_' + str(i) + '.txt'
             random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
@@ -44,18 +41,18 @@ def simple_command(parameters):
 
 
 # Executes the command to generate branches and commit based on the user input
-def custom_command(parameters):
+def custom_command(couples):
     git.init_git_repo()
 
-    for single_parameter in parameters:
-        parameter_couple = single_parameter.replace('(', '').replace(')', '').split(',')
+    for single_couple in couples:
+        parameter_couple = single_couple.replace('(', '').replace(')', '').split(',')
         branch_name = parameter_couple[0]
-        n_of_commits = int(parameter_couple[1])
+        commits = int(parameter_couple[1])
 
         git.create_branch(branch_name)
         git.checkout(branch_name)
 
-        for j in range(0, n_of_commits):
+        for j in range(0, commits):
             # create a new file
             filename = 'file_in_branch_' + str(branch_name) + '.txt'
             random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
@@ -74,12 +71,12 @@ def custom_command(parameters):
     return
 
 
-def random_command(parameters):
+def random_command(max_number_of_branches, max_number_of_commits):
     git.init_git_repo()
 
-    n_of_branches = random.randint(1, int(parameters[0]))
+    branches = random.randint(1, max_number_of_branches)
 
-    for i in range(1, n_of_branches + 1):
+    for i in range(1, branches + 1):
 
         # create new branch
         branch_name = 'new_branch_' + str(i)
@@ -88,9 +85,9 @@ def random_command(parameters):
         # checkout on the created branch
         git.checkout(branch_name)
 
-        n_of_commits = random.randint(1, int(parameters[1]))
+        commits = random.randint(1, max_number_of_commits)
 
-        for j in range(0, n_of_commits):
+        for j in range(0, commits):
             # create a new file
             filename = 'file_in_branch_' + str(i) + '.txt'
             random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
@@ -126,10 +123,12 @@ if __name__ == '__main__':
             random_branches = random.randint(3, 5)
             random_commits = random.randint(2, 5)
 
-            random_command([random_branches, random_commits])
+            random_command(random_branches, random_commits)
 
         if command == 'simple':
-            simple_command(parameters)
+            n_of_branches = int(parameters[0])
+            n_of_commits = int(parameters[1])
+            simple_command(n_of_branches, n_of_commits)
 
         if command == 'custom' or command == '':
             custom_command(parameters)
