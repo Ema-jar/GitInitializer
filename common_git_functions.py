@@ -3,8 +3,10 @@
 import subprocess
 import time
 import os
+from ConfigParser import SafeConfigParser
 
-BASE_PATH = '../testGit'
+parser = SafeConfigParser().read('config.ini')
+BASE_PATH = parser.get('general', 'folder_path')
 BASE_GIT = 'git -C ' + BASE_PATH
 LOG_FILE = 'log.txt'
 

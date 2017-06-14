@@ -5,6 +5,9 @@ import random
 import string
 import common_git_functions as git
 import check_params as check
+from ConfigParser import SafeConfigParser
+
+
 
 
 # Executes the command to generate a simple configuration with commit and branches
@@ -113,6 +116,8 @@ def help_command():
 
 if __name__ == '__main__':
 
+    parser = SafeConfigParser().read('config.ini')
+
     parameters = sys.argv[:]
     parameters.pop(0)
     if check.check_params(parameters):
@@ -120,8 +125,8 @@ if __name__ == '__main__':
         command = sys.argv[1]
 
         if command == 'random':
-            random_branches = random.randint(3, 5)
-            random_commits = random.randint(2, 5)
+            random_branches = random.randint(int(parser.get('random_mode', 'min_branch')), int(parser.get('random_mode', 'max_branch')))
+            random_commits = random.randint(int(parser.get('random_mode', 'min_commit')), int(parser.get('random_mode', 'max_commit')))
 
             print('\x1b[2;30;42m' + 'COMMAND: ' + command + ' ' + str(random_branches) + ' ' + str(random_commits) + '\x1b[0m')
             random_command(random_branches, random_commits)
