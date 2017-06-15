@@ -58,6 +58,11 @@ def check_custom(params):
 
 # Prints the usage message
 def print_usage():
-    print 'Usage: initializer.py [simple n_of_branches n_of_commits ] [random] [custom (branch_name,n_of_commits) ...]'
+    print 'Usage: initializer.py ' \
+          '[simple n_of_branches n_of_commits ] ' \
+          '[random] ' \
+          '[custom (branch_name,n_of_commits) ...]' \
+          '[show-conf]' \
+          '[edit-conf (param_name, param_value)]'
     return
 

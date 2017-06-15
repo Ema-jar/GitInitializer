@@ -9,8 +9,6 @@ import config_manager as config
 from ConfigParser import SafeConfigParser
 
 
-
-
 # Executes the command to generate a simple configuration with commit and branches
 def simple_command(branches, commits):
     git.init_git_repo()
