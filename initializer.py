@@ -5,6 +5,7 @@ import random
 import string
 import common_git_functions as git
 import check_params as check
+import config_manager as config
 from ConfigParser import SafeConfigParser
 
 
@@ -147,4 +148,10 @@ if __name__ == '__main__':
 
         if command == '--help':
             help_command()
+
+        if command == 'edit-conf':
+            config.edit(parameters)
+
+        if command == 'show-conf':
+            config.show(parameters)
 
