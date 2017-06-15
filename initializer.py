@@ -113,6 +113,15 @@ def help_command():
     check.print_usage()
     return
 
+
+def edit_conf(params):
+    return
+
+
+def show_conf(parameter_name):
+    return
+
+
 if __name__ == '__main__':
 
     parser = SafeConfigParser().read('config.ini')
@@ -148,8 +157,9 @@ if __name__ == '__main__':
             help_command()
 
         if command == 'edit-conf':
-            config.edit(parameters)
+            edit_conf(parameters)
 
         if command == 'show-conf':
-            config.show(parameters)
+            parameter_name = parameters[0]
+            show_conf(parameter_name)
 
