@@ -15,7 +15,28 @@ def check_params(params):
     if command == 'custom':
         return check_custom(params)
 
+    if command == 'edit-conf':
+        return check_edit_conf(params)
+
+    if command == 'show-conf':
+        return check_edit_conf(params)
+
     return False
+
+
+def check_edit_conf(params):
+
+    return
+
+
+# show-conf takes as many params as input
+def check_show_conf(params):
+    for single_param in params:
+        if not isinstance(single_param, basestring):
+            print single_param + ' is not a string'
+            return False
+
+    return True
 
 
 # SIMPLE takes two params n_of_branches and n_of_commits
