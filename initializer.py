@@ -118,8 +118,12 @@ def edit_conf(params):
     return
 
 
-def show_conf(parameter_name):
-    return
+def show_conf(params):
+    confs_map = {}
+    for single_param in params:
+        confs_map[single_param] = config.get(single_param)
+
+    return confs_map
 
 
 if __name__ == '__main__':
@@ -160,6 +164,6 @@ if __name__ == '__main__':
             edit_conf(parameters)
 
         if command == 'show-conf':
-            parameter_name = parameters[0]
-            show_conf(parameter_name)
+            confs_map = show_conf(parameters)
+            print confs_map
 

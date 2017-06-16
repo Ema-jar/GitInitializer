@@ -6,6 +6,6 @@ def edit(params):
     return
 
 
-# Shows the value for a single param saved in config.ini
-def show(param):
+# Returns the value for a single param saved in config.ini
+def get(param):
     return
