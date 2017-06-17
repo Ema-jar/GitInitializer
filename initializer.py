@@ -155,9 +155,6 @@ if __name__ == '__main__':
         if command == '--help':
             help_command()
 
-        if command == 'edit-conf':
-            edit_conf(parameters)
-
         if command == 'show-conf':
             show_conf()
 

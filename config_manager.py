@@ -5,6 +5,12 @@ from ConfigParser import SafeConfigParser
 parser = SafeConfigParser().read('config.ini')
 
 
+# Returns the value for a given parameter
+def get_single(section, key):
+    parameter = parser.get(section, key)
+    return parameter
+
+
 # Returns a map that contains the config file
 def get_all():
     config_map = {}
@@ -13,6 +19,6 @@ def get_all():
         for (key, val) in parser.items(section):
             section_map[key] = val
 
-            config_map[section] = section_map
+        config_map[section] = section_map
 
     return config_map
