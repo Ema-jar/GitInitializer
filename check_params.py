@@ -1,6 +1,7 @@
 # Contains all the function used to check the inputs from shell
 
 
+# Dispatcher method
 def check_params(params):
 
     command = params[0]
@@ -29,12 +30,11 @@ def check_edit_conf(params):
     return
 
 
-# show-conf takes as many params as input
+# SHOW-CONF takes no parameters
 def check_show_conf(params):
-    for single_param in params:
-        if not isinstance(single_param, basestring):
-            print single_param + ' is not a string'
-            return False
+    if len(params) != 0:
+        print 'Expected no parameters for SHOW-CONF action, ' + len(params) + ' where found'
+        return False
 
     return True
 
