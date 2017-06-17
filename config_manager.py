@@ -5,11 +5,6 @@ from ConfigParser import SafeConfigParser
 parser = SafeConfigParser().read('config.ini')
 
 
-# Edits the values in config.ini
-def edit(params):
-    return
-
-
 # Returns a map that contains the config file
 def get_all():
     config_map = {}

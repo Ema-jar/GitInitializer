@@ -114,17 +114,11 @@ def help_command():
     return
 
 
-def edit_conf(params):
+# Prints the retrieved configuration in a formatted way
+def show_conf():
+    configs = config.get_all()
+    print configs
     return
-
-
-def show_conf(params):
-    confs_map = {}
-    for single_param in params:
-        confs_map[single_param] = config.get(single_param)
-
-    return confs_map
-
 
 if __name__ == '__main__':
 
@@ -164,6 +158,5 @@ if __name__ == '__main__':
             edit_conf(parameters)
 
         if command == 'show-conf':
-            confs_map = show_conf(parameters)
-            print confs_map
+            show_conf()
 
