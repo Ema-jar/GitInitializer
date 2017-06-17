@@ -73,6 +73,7 @@ def custom_command(couples):
     return
 
 
+# Executes the command to generate random branches and commit
 def random_command(max_number_of_branches, max_number_of_commits):
     git.init_git_repo()
 
