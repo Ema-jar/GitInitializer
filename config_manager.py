@@ -10,7 +10,14 @@ def edit(params):
     return
 
 
-# Returns the value for a single param saved in config.ini
-def get(param, under=None):
-    parser.get(under, param)
-    return
+# Returns a map that contains the config file
+def get_all():
+    config_map = {}
+    for section in parser.sections():
+        section_map = {}
+        for (key, val) in parser.items(section):
+            section_map[key] = val
+
+            config_map[section] = section_map
+
+    return config_map
