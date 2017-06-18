@@ -117,7 +117,7 @@ def help_command():
 
 # Prints the retrieved configuration in a formatted way
 def show_conf():
-    pp = pprint.PrettyPrinter(depth=4)
+    pp = pprint.PrettyPrinter()
     configs = config.get_all()
     pp.pprint(configs)
     return
