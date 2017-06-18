@@ -1,12 +1,12 @@
 #!/usr/bin/python
-
+import pprint
 import sys
 import random
 import string
 import common_git_functions as git
 import check_params as check
 import config_manager as config
-from ConfigParser import SafeConfigParser
+from ConfigParser import ConfigParser
 
 
 # Executes the command to generate a simple configuration with commit and branches
@@ -117,13 +117,14 @@ def help_command():
 
 # Prints the retrieved configuration in a formatted way
 def show_conf():
+    pp = pprint.PrettyPrinter()
     configs = config.get_all()
-    print configs
+    pp.pprint(configs)
     return
 
 if __name__ == '__main__':
 
-    parser = SafeConfigParser().read('config.ini')
+    parser = ConfigParser().read('config.ini')
 
     parameters = sys.argv[:]
     parameters.pop(0)
