@@ -2,7 +2,8 @@
 
 from ConfigParser import SafeConfigParser
 
-parser = SafeConfigParser().read('config.ini')
+parser = SafeConfigParser()
+parser.read('config.ini')
 
 
 # Returns the value for a given parameter

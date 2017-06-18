@@ -20,7 +20,7 @@ def check_params(params):
         return check_edit_conf(params)
 
     if command == 'show-conf':
-        return check_edit_conf(params)
+        return check_show_conf(params)
 
     return False
 
