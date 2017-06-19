@@ -3,8 +3,9 @@
 import subprocess
 import time
 import os
+import config_manager as config
 
-BASE_PATH = '../testGit'
+BASE_PATH = config.get('general', 'folder_path')
 BASE_GIT = 'git -C ' + BASE_PATH
 LOG_FILE = 'log.txt'
 
