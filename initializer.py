@@ -1,5 +1,4 @@
 #!/usr/bin/python
-
 import sys
 import random
 import string
@@ -72,6 +71,7 @@ def custom_command(couples):
     return
 
 
+# Executes the command to generate random branches and commit
 def random_command(max_number_of_branches, max_number_of_commits):
     git.init_git_repo()
 
@@ -113,17 +113,14 @@ def help_command():
     return
 
 
-def edit_conf(params):
+# Prints the retrieved configuration in a formatted way
+def show_conf():
+    configs = config.get_all()
+    for section, values in configs.iteritems():
+        print '[' + section + ']'
+        for key, value in values.iteritems():
+            print '  ' + key + ': ' + value
     return
-
-
-def show_conf(params):
-    confs_map = {}
-    for single_param in params:
-        confs_map[single_param] = config.get(single_param)
-
-    return confs_map
-
 
 if __name__ == '__main__':
 
@@ -157,9 +154,6 @@ if __name__ == '__main__':
         if command == '--help':
             help_command()
 
-        if command == 'edit-conf':
-            edit_conf(parameters)
-
         if command == 'show-conf':
-            print show_conf(parameters)
+            print show_conf()
 
