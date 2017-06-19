@@ -47,7 +47,7 @@ def create_branch(branch_name):
     return
 
 
-# Check out on a new branch
+# Checks out on a new branch
 def checkout(branch_name):
     execute(BASE_GIT + ' checkout ' + branch_name)
     return
