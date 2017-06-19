@@ -6,7 +6,6 @@ import string
 import common_git_functions as git
 import check_params as check
 import config_manager as config
-from ConfigParser import SafeConfigParser
 
 
 # Executes the command to generate a simple configuration with commit and branches
@@ -128,8 +127,6 @@ def show_conf(params):
 
 if __name__ == '__main__':
 
-    parser = SafeConfigParser().read('config.ini')
-
     parameters = sys.argv[:]
     parameters.pop(0)
     if check.check_params(parameters):
@@ -137,8 +134,8 @@ if __name__ == '__main__':
         command = sys.argv[1]
 
         if command == 'random':
-            random_branches = random.randint(int(parser.get('random_mode', 'min_branch')), int(parser.get('random_mode', 'max_branch')))
-            random_commits = random.randint(int(parser.get('random_mode', 'min_commit')), int(parser.get('random_mode', 'max_commit')))
+            random_branches = random.randint(int(config.get('random_mode', 'min_branch')), int(config.get('random_mode', 'max_branch')))
+            random_commits = random.randint(int(config.get('random_mode', 'min_commit')), int(config.get('random_mode', 'max_commit')))
 
             print('\x1b[2;30;42m' + 'COMMAND: ' + command + ' ' + str(random_branches) + ' ' + str(random_commits) + '\x1b[0m')
             random_command(random_branches, random_commits)
@@ -164,6 +161,5 @@ if __name__ == '__main__':
             edit_conf(parameters)
 
         if command == 'show-conf':
-            confs_map = show_conf(parameters)
-            print confs_map
+            print show_conf(parameters)
 
