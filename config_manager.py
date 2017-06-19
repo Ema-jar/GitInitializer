@@ -12,7 +12,7 @@ def get(section, key):
     return parameter
 
 
-# Returns a map that contains the config file
+# Returns a map containing the configurations
 def get_all():
     config_map = {}
     for section in parser.sections():
