@@ -17,7 +17,7 @@ def commit():
     return
 
 
-# Append a given string to a file
+# Appends a given string to a file
 def update_file(filename, string_to_append):
     execute('echo "[' + str(time.time()) + '] -> ' + string_to_append + '" >> ' + BASE_PATH + '/' + filename)
     return
