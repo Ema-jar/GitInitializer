@@ -7,7 +7,7 @@ import config_manager as config
 
 BASE_PATH = config.get('general', 'folder_path')
 BASE_GIT = 'git -C ' + BASE_PATH
-LOG_FILE = 'log.txt'
+LOG_FILE = config.get('general', 'log_file_name')
 
 
 # Adds all and commits all using git commit command
