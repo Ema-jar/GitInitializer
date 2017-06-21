@@ -22,7 +22,7 @@ def simple_command(branches, commits):
 
         for j in range(0, commits):
             # create a new file
-            filename = 'file_in_branch_' + str(i) + '.txt'
+            filename = config.get('general', 'file_name') + str(i) + '.txt'
             random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
             git.update_file(filename, random_string)
 
@@ -54,7 +54,7 @@ def custom_command(couples):
 
         for j in range(0, commits):
             # create a new file
-            filename = 'file_in_branch_' + str(branch_name) + '.txt'
+            filename = config.get('general', 'file_name') + str(branch_name) + '.txt'
             random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
             git.update_file(filename, random_string)
 
@@ -90,7 +90,7 @@ def random_command(max_number_of_branches, max_number_of_commits):
 
         for j in range(0, commits):
             # create a new file
-            filename = 'file_in_branch_' + str(i) + '.txt'
+            filename = config.get('general', 'file_name') + str(i) + '.txt'
             random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
             git.update_file(filename, random_string)
 
