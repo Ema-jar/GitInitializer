@@ -1,12 +1,10 @@
 #!/usr/bin/python
-import pprint
 import sys
 import random
 import string
 import common_git_functions as git
 import check_params as check
 import config_manager as config
-from ConfigParser import ConfigParser
 
 
 # Executes the command to generate a simple configuration with commit and branches
@@ -24,7 +22,7 @@ def simple_command(branches, commits):
 
         for j in range(0, commits):
             # create a new file
-            filename = 'file_in_branch_' + str(i) + '.txt'
+            filename = config.get('general', 'file_name') + str(i) + '.txt'
             random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
             git.update_file(filename, random_string)
 
@@ -56,7 +54,7 @@ def custom_command(couples):
 
         for j in range(0, commits):
             # create a new file
-            filename = 'file_in_branch_' + str(branch_name) + '.txt'
+            filename = config.get('general', 'file_name') + str(branch_name) + '.txt'
             random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
             git.update_file(filename, random_string)
 
@@ -92,7 +90,7 @@ def random_command(max_number_of_branches, max_number_of_commits):
 
         for j in range(0, commits):
             # create a new file
-            filename = 'file_in_branch_' + str(i) + '.txt'
+            filename = config.get('general', 'file_name') + str(i) + '.txt'
             random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
             git.update_file(filename, random_string)
 
@@ -117,14 +115,14 @@ def help_command():
 
 # Prints the retrieved configuration in a formatted way
 def show_conf():
-    pp = pprint.PrettyPrinter()
     configs = config.get_all()
-    pp.pprint(configs)
+    for section, values in configs.iteritems():
+        print '[' + section + ']'
+        for key, value in values.iteritems():
+            print '  ' + key + ': ' + value
     return
 
 if __name__ == '__main__':
-
-    parser = ConfigParser().read('config.ini')
 
     parameters = sys.argv[:]
     parameters.pop(0)
@@ -133,8 +131,8 @@ if __name__ == '__main__':
         command = sys.argv[1]
 
         if command == 'random':
-            random_branches = random.randint(int(parser.get('random_mode', 'min_branch')), int(parser.get('random_mode', 'max_branch')))
-            random_commits = random.randint(int(parser.get('random_mode', 'min_commit')), int(parser.get('random_mode', 'max_commit')))
+            random_branches = random.randint(int(config.get('random_mode', 'min_branch')), int(config.get('random_mode', 'max_branch')))
+            random_commits = random.randint(int(config.get('random_mode', 'min_commit')), int(config.get('random_mode', 'max_commit')))
 
             print('\x1b[2;30;42m' + 'COMMAND: ' + command + ' ' + str(random_branches) + ' ' + str(random_commits) + '\x1b[0m')
             random_command(random_branches, random_commits)
@@ -157,5 +155,5 @@ if __name__ == '__main__':
             help_command()
 
         if command == 'show-conf':
-            show_conf()
+            print show_conf()
 

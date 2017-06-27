@@ -7,7 +7,7 @@ parser.read('config.ini')
 
 
 # Returns the value for a given parameter
-def get_single(section, key):
+def get(section, key):
     parameter = parser.get(section, key)
     return parameter
 
